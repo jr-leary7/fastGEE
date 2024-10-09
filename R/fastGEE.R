@@ -8,6 +8,7 @@
 #' @param id A character specifying the name of the ID variable. Defaults to NULL. 
 #' @param family The family of the model to be fitted. Defaults to \code{\link[stats]{gaussian}} with the identity link. 
 #' @param cor.structure A character specifying the desired correlation structure. Defaults to "independence". 
+#' @param scale.fix (Optional) A Boolean specifying whether the scale should be held fixed. Defaults to TRUE. 
 #' @param n.cores (Optional) An integer specifying the number of cores to be used in \code{Eigen} matrix operations. Defaults to 1. 
 #' @param epsilon (Optional) A double specifying the desired tolerance. Defaults to 1e-5. 
 #' @param max.iter (Optional) An integer specifying the maximum number of iterations. Defaults to 20. 
@@ -21,6 +22,7 @@ fastGEE <- function(formula = NULL,
                     id = NULL, 
                     family = stats::gaussian(link = "identity"), 
                     cor.structure = "independence",
+                    scale.fix = TRUE, 
                     n.cores = 1L, 
                     epsilon = 1e-5, 
                     max.iter = 20L) {
@@ -49,5 +51,9 @@ fastGEE <- function(formula = NULL,
   } else if (is.character(data[[id]])) {
     data <- dplyr::mutate(data, !!id_sym := as.integer(as.factor(!!id_sym)))
   }
-  
+  # extract family functions 
+  link_fun <- family$linkfun
+  inv_link <- family$linkinv
+  var_fun <- family$variance
+  inv_link_deriv <- family$mu.eta
 }
