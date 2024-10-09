@@ -11,21 +11,48 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
-// eigenMapMatrixInvert
-SEXP eigenMapMatrixInvert(const Eigen::Map<Eigen::MatrixXd> A, int n_cores);
-RcppExport SEXP _fastGEE_eigenMapMatrixInvert(SEXP ASEXP, SEXP n_coresSEXP) {
+// eigenMapMatInv
+SEXP eigenMapMatInv(const Eigen::Map<Eigen::MatrixXd> A, int n_cores);
+RcppExport SEXP _fastGEE_eigenMapMatInv(SEXP ASEXP, SEXP n_coresSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const Eigen::Map<Eigen::MatrixXd> >::type A(ASEXP);
     Rcpp::traits::input_parameter< int >::type n_cores(n_coresSEXP);
-    rcpp_result_gen = Rcpp::wrap(eigenMapMatrixInvert(A, n_cores));
+    rcpp_result_gen = Rcpp::wrap(eigenMapMatInv(A, n_cores));
+    return rcpp_result_gen;
+END_RCPP
+}
+// eigenMapMatMult
+SEXP eigenMapMatMult(const Eigen::Map<Eigen::MatrixXd> A, const Eigen::Map<Eigen::MatrixXd> B, int n_cores);
+RcppExport SEXP _fastGEE_eigenMapMatMult(SEXP ASEXP, SEXP BSEXP, SEXP n_coresSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Eigen::Map<Eigen::MatrixXd> >::type A(ASEXP);
+    Rcpp::traits::input_parameter< const Eigen::Map<Eigen::MatrixXd> >::type B(BSEXP);
+    Rcpp::traits::input_parameter< int >::type n_cores(n_coresSEXP);
+    rcpp_result_gen = Rcpp::wrap(eigenMapMatMult(A, B, n_cores));
+    return rcpp_result_gen;
+END_RCPP
+}
+// eigenMapMatTrans
+SEXP eigenMapMatTrans(const Eigen::Map<Eigen::MatrixXd> A, int n_cores);
+RcppExport SEXP _fastGEE_eigenMapMatTrans(SEXP ASEXP, SEXP n_coresSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Eigen::Map<Eigen::MatrixXd> >::type A(ASEXP);
+    Rcpp::traits::input_parameter< int >::type n_cores(n_coresSEXP);
+    rcpp_result_gen = Rcpp::wrap(eigenMapMatTrans(A, n_cores));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_fastGEE_eigenMapMatrixInvert", (DL_FUNC) &_fastGEE_eigenMapMatrixInvert, 2},
+    {"_fastGEE_eigenMapMatInv", (DL_FUNC) &_fastGEE_eigenMapMatInv, 2},
+    {"_fastGEE_eigenMapMatMult", (DL_FUNC) &_fastGEE_eigenMapMatMult, 3},
+    {"_fastGEE_eigenMapMatTrans", (DL_FUNC) &_fastGEE_eigenMapMatTrans, 2},
     {NULL, NULL, 0}
 };
 
