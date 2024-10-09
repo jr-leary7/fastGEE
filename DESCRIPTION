@@ -1,0 +1,20 @@
+Package: fastGEE
+Title: Fit genearlized estimating equations models swiftly and efficiently. 
+Version: 0.0.0.9000
+Authors@R: c(person(given = c("Jack", "R."), family = "Leary", email = "j.leary@ufl.edu", role = c("aut", "cre"), comment = c(ORCID = "0009-0004-8821-3269")))
+Description: Born out of a desire for a faster, easier GEE implementation, this package implements generalized estimating equations in R for a variety of distributions and correlation structures. 
+License: MIT + file LICENSE
+Encoding: UTF-8
+RoxygenNote: 7.3.2
+VignetteBuilder: knitr
+URL: https://github.com/jr-leary7/fastGEE
+BugReports: https://github.com/jr-leary7/fastGEE/issues
+Config/testthat/edition: 3
+Depends: 
+  magrittr, 
+  R (>= 3.5.0)
+LinkingTo: 
+    Rcpp,
+    RcppEigen
+Imports: 
+    Rcpp
