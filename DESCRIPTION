@@ -10,6 +10,7 @@ VignetteBuilder: knitr
 URL: https://github.com/jr-leary7/fastGEE
 BugReports: https://github.com/jr-leary7/fastGEE/issues
 Config/testthat/edition: 3
+LazyData: true
 Depends: 
   magrittr, 
   R (>= 3.5.0)
@@ -17,4 +18,5 @@ LinkingTo:
     Rcpp,
     RcppEigen
 Imports: 
-    Rcpp
+    Rcpp, 
+    RcppEigen
